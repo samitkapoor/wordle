@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:wordle/components/my_key.dart';
+import 'package:wordle/controllers/keyboard.dart';
 
 class MyPlayground extends StatelessWidget {
-  const MyPlayground({super.key});
+  MyPlayground({super.key});
+
+  Keyboard keyboardController = Keyboard();
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +24,39 @@ class MyPlayground extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(5),
             height: 160,
-            color: Colors.white,
             width: double.infinity,
             child: Column(
-              children: [],
+              children: [
+                buildKeyboardRow(row: keyboardController.rowOne),
+                buildKeyboardRow(row: keyboardController.rowTwo),
+                buildKeyboardRow(row: keyboardController.rowThree),
+              ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Container buildKeyboardRow({required row}) {
+    return Container(
+      height: 50,
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ...row.map(
+            (alphabet) {
+              return InkWell(
+                borderRadius: BorderRadius.circular(5),
+                onTap: () {},
+                child: MyKey(
+                  alphabet: alphabet,
+                  keys: row.length,
+                ),
+              );
+            },
+          ).toList(),
         ],
       ),
     );

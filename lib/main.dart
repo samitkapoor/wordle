@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         hintColor: const Color(0xff9AD1D4),
         canvasColor: const Color(0xffCCDBDC),
       ),
-      home: const MyPlayground(),
+      home: MyPlayground(),
     );
   }
 }
