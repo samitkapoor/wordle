@@ -1,4 +1,4 @@
-const List<String> words = [
+List<String> words = [
   'aahed',
   'aalii',
   'aargh',

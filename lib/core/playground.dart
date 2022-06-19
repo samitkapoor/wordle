@@ -20,8 +20,6 @@ class _MyPlaygroundState extends State<MyPlayground> {
   ActionController actionController = Get.find<ActionController>();
   @override
   Widget build(BuildContext context) {
-    randomNumberGenerator();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Wordle'),

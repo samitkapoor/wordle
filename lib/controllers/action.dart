@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wordle/constants/words.dart';
 import 'package:wordle/controllers/keyboard.dart';
 import 'package:wordle/controllers/word_slot.dart';
+import 'package:wordle/utils/random_number_generator.dart';
 
 class ActionController extends GetxController {
   Keyboard keyboardController = Keyboard();
@@ -15,8 +17,18 @@ class ActionController extends GetxController {
 
   List<String> inputs = ['', '', '', '', '', ''];
 
+  @override
+  void onInit() {
+    Future.delayed(const Duration(seconds: 1)).then((value) async {
+      await randomNumberGenerator();
+      print(wordToWin);
+    });
+    super.onInit();
+  }
+
   void setWordToWin(String value) {
     wordToWin = value;
+
     update();
   }
 
@@ -43,9 +55,36 @@ class ActionController extends GetxController {
     }
   }
 
+  bool findInList(String target) {
+    for (int i = 0; i < words.length; i++) {
+      if (words[i] == target) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool findInString(String base, String target) {
+    for (int i = 0; i < base.length; i++) {
+      if (base[i] == target) return true;
+    }
+    return false;
+  }
+
   void onPressEnter() {
-    if (inputs[inputNumber].length == 5 &&
-        words.contains(inputs[inputNumber].toLowerCase())) {
+    String input = inputs[inputNumber].toLowerCase();
+
+    if (inputs[inputNumber].length == 5 && findInList(input)) {
+      for (int i = 0; i < 5; i++) {
+        if (wordToWin[i] == input[i]) {
+          wordSlotController.wordSlots[inputNumber]['slots'][i].color =
+              Colors.green;
+        } else if (findInString(wordToWin, input[i])) {
+          wordSlotController.wordSlots[inputNumber]['slots'][i].color =
+              Colors.orange;
+        }
+      }
+
       inputNumber += 1;
       wordSlotController.wordSlots[inputNumber]['visibility'] = true;
 
