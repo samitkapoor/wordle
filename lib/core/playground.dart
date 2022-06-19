@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wordle/components/my_key.dart';
+import 'package:wordle/constants/words.dart';
 import 'package:wordle/controllers/keyboard.dart';
+import 'package:wordle/controllers/word_slot.dart';
 
 class MyPlayground extends StatelessWidget {
   MyPlayground({super.key});
 
   Keyboard keyboardController = Keyboard();
+
+  WordSlot wordSlotController = WordSlot();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,37 @@ class MyPlayground extends StatelessWidget {
         children: [
           Expanded(
             child: ListView(
+              padding: const EdgeInsets.all(10),
               shrinkWrap: true,
+              physics: const ScrollPhysics(),
+              children: [
+                ...wordSlotController.wordSlots.map(
+                  (wordSlot) {
+                    if (wordSlot['visibility'] == true) {
+                      return Row(
+                        children: [
+                          ...wordSlot['slots'].map(
+                            (cell) {
+                              return Container(
+                                margin: const EdgeInsets.all(5),
+                                height:
+                                    (MediaQuery.of(context).size.width - 70) /
+                                        5,
+                                width:
+                                    (MediaQuery.of(context).size.width - 70) /
+                                        5,
+                                color: cell.color,
+                              );
+                            },
+                          ).toList(),
+                        ],
+                      );
+                    } else {
+                      return SizedBox();
+                    }
+                  },
+                ).toList(),
+              ],
             ),
           ),
           Container(
