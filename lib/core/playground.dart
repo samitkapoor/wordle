@@ -48,7 +48,12 @@ class _MyPlaygroundState extends State<MyPlayground> {
                                   width:
                                       (MediaQuery.of(context).size.width - 70) /
                                           5,
-                                  color: cell.color,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 3, color: Colors.black),
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: cell.color,
+                                  ),
                                   alignment: Alignment.center,
                                   child: Text(
                                     cell.value,
