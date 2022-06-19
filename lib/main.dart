@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
           titleTextStyle: GoogleFonts.aBeeZee(
             fontSize: 24,
+            color: Colors.black,
             letterSpacing: 1,
             fontWeight: FontWeight.w600,
           ),
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(),
         colorScheme: const ColorScheme.dark(),
         primaryColor: const Color(0xff007EA7),
-        scaffoldBackgroundColor: const Color(0xff003249),
+        // scaffoldBackgroundColor: const Color(0xff003249),
+        scaffoldBackgroundColor: Colors.white,
         cardColor: const Color(0xff80CED7),
         hintColor: const Color(0xff9AD1D4),
         canvasColor: const Color(0xffCCDBDC),

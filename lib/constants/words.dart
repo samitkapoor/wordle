@@ -11034,7 +11034,6 @@ List<String> words = [
   'prunt',
   'pruta',
   'psalm',
-  'psend',
   'pseud',
   'pshav',
   'pshaw',

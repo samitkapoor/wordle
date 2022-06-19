@@ -9,8 +9,6 @@ class ActionController extends GetxController {
   Keyboard keyboardController = Keyboard();
   WordSlot wordSlotController = WordSlot();
 
-  bool first = true;
-
   int inputNumber = 0;
 
   String wordToWin = '';
@@ -21,8 +19,18 @@ class ActionController extends GetxController {
   void onInit() {
     Future.delayed(const Duration(seconds: 1)).then((value) async {
       await randomNumberGenerator();
+      print(wordToWin);
     });
     super.onInit();
+  }
+
+  void onReset() {
+    keyboardController = Keyboard();
+    wordSlotController = WordSlot();
+    inputNumber = 0;
+    randomNumberGenerator();
+    inputs = ['', '', '', '', '', ''];
+    update();
   }
 
   void setWordToWin(String value) {
@@ -71,9 +79,16 @@ class ActionController extends GetxController {
   }
 
   void onPressEnter() {
-    String input = inputs[inputNumber].toLowerCase();
+    String input = '';
+    if (inputNumber <= 5) {
+      input = inputs[inputNumber].toLowerCase();
+    }
 
-    if (inputs[inputNumber].length == 5 && findInList(input)) {
+    if (inputNumber == 6) {
+      onReset();
+    } else if (inputNumber <= 5 &&
+        inputs[inputNumber].length == 5 &&
+        findInList(input)) {
       for (int i = 0; i < 5; i++) {
         if (wordToWin[i] == input[i]) {
           wordSlotController.wordSlots[inputNumber]['slots'][i].color =
@@ -85,7 +100,9 @@ class ActionController extends GetxController {
       }
 
       inputNumber += 1;
-      wordSlotController.wordSlots[inputNumber]['visibility'] = true;
+      if (inputNumber <= 5) {
+        wordSlotController.wordSlots[inputNumber]['visibility'] = true;
+      }
 
       update();
     }
