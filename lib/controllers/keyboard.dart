@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:wordle/models/alphabet.dart';
 
-class Keyboard {
+class Keyboard extends GetxController {
   List<Alphabet> rowOne = [
     Alphabet(value: 'q', position: 0),
     Alphabet(value: 'w', position: 0),

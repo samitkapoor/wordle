@@ -3,17 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:wordle/components/my_key.dart';
 import 'package:wordle/controllers/keyboard.dart';
 import 'package:wordle/controllers/word_slot.dart';
+import 'package:wordle/utils/random_number_generator.dart';
 
 // ignore: must_be_immutable
-class MyPlayground extends StatelessWidget {
-  MyPlayground({super.key});
+class MyPlayground extends StatefulWidget {
+  const MyPlayground({super.key});
 
+  @override
+  State<MyPlayground> createState() => _MyPlaygroundState();
+}
+
+class _MyPlaygroundState extends State<MyPlayground> {
   Keyboard keyboardController = Keyboard();
 
   WordSlot wordSlotController = WordSlot();
 
   @override
   Widget build(BuildContext context) {
+    randomNumberGenerator();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Wordle'),
@@ -48,7 +56,7 @@ class MyPlayground extends StatelessWidget {
                         ],
                       );
                     } else {
-                      return SizedBox();
+                      return const SizedBox();
                     }
                   },
                 ).toList(),
