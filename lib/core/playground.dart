@@ -29,7 +29,56 @@ class MyPlayground extends StatelessWidget {
               children: [
                 buildKeyboardRow(row: keyboardController.rowOne),
                 buildKeyboardRow(row: keyboardController.rowTwo),
-                buildKeyboardRow(row: keyboardController.rowThree),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 2),
+                          height: 40,
+                          width: (MediaQuery.of(context).size.width - 10 - 40) /
+                              10,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          alignment: Alignment.center,
+                          child: const Icon(
+                            Icons.backspace_outlined,
+                          ),
+                        ),
+                      ),
+                    ),
+                    buildKeyboardRow(row: keyboardController.rowThree),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 2),
+                          height: 40,
+                          width: (MediaQuery.of(context).size.width - 10 - 40) /
+                              10,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          alignment: Alignment.center,
+                          child: Container(
+                            height: 30,
+                            width: 25,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/icons/enter.png'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
