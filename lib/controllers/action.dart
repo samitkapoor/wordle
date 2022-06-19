@@ -21,7 +21,6 @@ class ActionController extends GetxController {
   void onInit() {
     Future.delayed(const Duration(seconds: 1)).then((value) async {
       await randomNumberGenerator();
-      print(wordToWin);
     });
     super.onInit();
   }

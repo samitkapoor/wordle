@@ -4,5 +4,8 @@ class Alphabet {
   //on which position is the alphabet placed inside the word
   int position;
 
-  Alphabet({required this.value, required this.position});
+  bool disabled;
+
+  Alphabet(
+      {required this.value, required this.position, this.disabled = false});
 }

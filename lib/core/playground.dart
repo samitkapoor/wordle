@@ -40,7 +40,8 @@ class _MyPlaygroundState extends State<MyPlayground> {
                           children: [
                             ...wordSlot['slots'].map(
                               (cell) {
-                                return Container(
+                                return AnimatedContainer(
+                                  duration: const Duration(milliseconds: 250),
                                   margin: const EdgeInsets.all(5),
                                   height:
                                       (MediaQuery.of(context).size.width - 70) /
