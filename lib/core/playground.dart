@@ -120,33 +120,39 @@ class _MyPlaygroundState extends State<MyPlayground> {
                       row: actionController.keyboardController.rowThree,
                       actionController: actionController,
                     ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {
-                          actionController.onPressEnter();
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 2),
-                          height: 40,
-                          width: (MediaQuery.of(context).size.width - 10 - 40) /
-                              10,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          alignment: Alignment.center,
+                    GetBuilder<ActionController>(builder: (controller) {
+                      return Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            controller.onPressEnter();
+                          },
                           child: Container(
-                            height: 30,
-                            width: 25,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/icons/enter.png'),
+                            margin: const EdgeInsets.symmetric(horizontal: 2),
+                            height: 40,
+                            width:
+                                (MediaQuery.of(context).size.width - 10 - 40) /
+                                    10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            alignment: Alignment.center,
+                            child: Container(
+                              height: 30,
+                              width: 25,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      (controller.inputNumber <= 5)
+                                          ? 'assets/icons/enter.png'
+                                          : 'assets/icons/reset.png'),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                   ],
                 ),
               ],
