@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:wordle/models/alphabet.dart';
 
+//Each key in keyboard will look like this widget
+
+// ignore: must_be_immutable
 class MyKey extends StatelessWidget {
   MyKey({
     Key? key,
     required this.alphabet,
-    required this.keys,
   }) : super(key: key);
 
   Alphabet alphabet;
-
-  int keys;
 
   @override
   Widget build(BuildContext context) {

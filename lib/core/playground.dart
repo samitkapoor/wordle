@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:wordle/components/my_key.dart';
-import 'package:wordle/constants/words.dart';
 import 'package:wordle/controllers/keyboard.dart';
 import 'package:wordle/controllers/word_slot.dart';
 
+// ignore: must_be_immutable
 class MyPlayground extends StatelessWidget {
   MyPlayground({super.key});
 
@@ -135,7 +135,6 @@ class MyPlayground extends StatelessWidget {
                 onTap: () {},
                 child: MyKey(
                   alphabet: alphabet,
-                  keys: row.length,
                 ),
               );
             },
