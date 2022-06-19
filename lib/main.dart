@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:wordle/controllers/action.dart';
@@ -16,7 +17,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    ActionController actionController = Get.put(ActionController());
+
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wordle',
       theme: ThemeData(

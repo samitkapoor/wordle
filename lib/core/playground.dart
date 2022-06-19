@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:wordle/components/my_key.dart';
+import 'package:wordle/controllers/action.dart';
 import 'package:wordle/controllers/keyboard.dart';
 import 'package:wordle/controllers/word_slot.dart';
 import 'package:wordle/utils/random_number_generator.dart';
@@ -14,10 +17,7 @@ class MyPlayground extends StatefulWidget {
 }
 
 class _MyPlaygroundState extends State<MyPlayground> {
-  Keyboard keyboardController = Keyboard();
-
-  WordSlot wordSlotController = WordSlot();
-
+  ActionController actionController = Get.find<ActionController>();
   @override
   Widget build(BuildContext context) {
     randomNumberGenerator();
@@ -29,39 +29,50 @@ class _MyPlaygroundState extends State<MyPlayground> {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(10),
-              shrinkWrap: true,
-              physics: const ScrollPhysics(),
-              children: [
-                ...wordSlotController.wordSlots.map(
-                  (wordSlot) {
-                    if (wordSlot['visibility'] == true) {
-                      return Row(
-                        children: [
-                          ...wordSlot['slots'].map(
-                            (cell) {
-                              return Container(
-                                margin: const EdgeInsets.all(5),
-                                height:
-                                    (MediaQuery.of(context).size.width - 70) /
-                                        5,
-                                width:
-                                    (MediaQuery.of(context).size.width - 70) /
-                                        5,
-                                color: cell.color,
-                              );
-                            },
-                          ).toList(),
-                        ],
-                      );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
-                ).toList(),
-              ],
-            ),
+            child: GetBuilder<ActionController>(builder: (controller) {
+              return ListView(
+                padding: const EdgeInsets.all(10),
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                children: [
+                  ...controller.wordSlotController.wordSlots.map(
+                    (wordSlot) {
+                      if (wordSlot['visibility'] == true) {
+                        return Row(
+                          children: [
+                            ...wordSlot['slots'].map(
+                              (cell) {
+                                return Container(
+                                  margin: const EdgeInsets.all(5),
+                                  height:
+                                      (MediaQuery.of(context).size.width - 70) /
+                                          5,
+                                  width:
+                                      (MediaQuery.of(context).size.width - 70) /
+                                          5,
+                                  color: cell.color,
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    cell.value,
+                                    style: GoogleFonts.aBeeZee(
+                                      fontSize: 32,
+                                      letterSpacing: 1,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          ],
+                        );
+                      } else {
+                        return const SizedBox();
+                      }
+                    },
+                  ).toList(),
+                ],
+              );
+            }),
           ),
           Container(
             padding: const EdgeInsets.all(5),
@@ -69,14 +80,22 @@ class _MyPlaygroundState extends State<MyPlayground> {
             width: double.infinity,
             child: Column(
               children: [
-                buildKeyboardRow(row: keyboardController.rowOne),
-                buildKeyboardRow(row: keyboardController.rowTwo),
+                buildKeyboardRow(
+                  row: actionController.keyboardController.rowOne,
+                  actionController: actionController,
+                ),
+                buildKeyboardRow(
+                  row: actionController.keyboardController.rowTwo,
+                  actionController: actionController,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          actionController.onPressBackSpace();
+                        },
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 2),
                           height: 40,
@@ -93,10 +112,15 @@ class _MyPlaygroundState extends State<MyPlayground> {
                         ),
                       ),
                     ),
-                    buildKeyboardRow(row: keyboardController.rowThree),
+                    buildKeyboardRow(
+                      row: actionController.keyboardController.rowThree,
+                      actionController: actionController,
+                    ),
                     Expanded(
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          actionController.onPressEnter();
+                        },
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 2),
                           height: 40,
@@ -129,7 +153,8 @@ class _MyPlaygroundState extends State<MyPlayground> {
     );
   }
 
-  Container buildKeyboardRow({required row}) {
+  Container buildKeyboardRow(
+      {required List row, required ActionController actionController}) {
     return Container(
       height: 50,
       padding: const EdgeInsets.symmetric(vertical: 5),
@@ -140,7 +165,9 @@ class _MyPlaygroundState extends State<MyPlayground> {
             (alphabet) {
               return InkWell(
                 borderRadius: BorderRadius.circular(5),
-                onTap: () {},
+                onTap: () {
+                  actionController.onKeyPress(alphabet.value);
+                },
                 child: MyKey(
                   alphabet: alphabet,
                 ),
