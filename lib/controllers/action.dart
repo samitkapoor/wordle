@@ -99,10 +99,10 @@ class ActionController extends GetxController {
               Colors.orange;
         }
       }
-
-      if (inputs[inputNumber] == wordToWin) {
+      if (inputs[inputNumber].toLowerCase() == wordToWin) {
         ScaffoldMessenger.of(context)
             .showMaterialBanner(MyMaterialBanner(win: true));
+        update();
         return;
       }
 
