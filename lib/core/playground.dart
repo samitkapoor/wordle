@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wordle/components/keyboard_row.dart';
 
 import 'package:wordle/components/my_key.dart';
 import 'package:wordle/controllers/action.dart';
@@ -84,11 +85,11 @@ class _MyPlaygroundState extends State<MyPlayground> {
             width: double.infinity,
             child: Column(
               children: [
-                buildKeyboardRow(
+                MyKeyboardRow(
                   row: actionController.keyboardController.rowOne,
                   actionController: actionController,
                 ),
-                buildKeyboardRow(
+                MyKeyboardRow(
                   row: actionController.keyboardController.rowTwo,
                   actionController: actionController,
                 ),
@@ -116,7 +117,7 @@ class _MyPlaygroundState extends State<MyPlayground> {
                         ),
                       ),
                     ),
-                    buildKeyboardRow(
+                    MyKeyboardRow(
                       row: actionController.keyboardController.rowThree,
                       actionController: actionController,
                     ),
@@ -158,32 +159,6 @@ class _MyPlaygroundState extends State<MyPlayground> {
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Container buildKeyboardRow(
-      {required List row, required ActionController actionController}) {
-    return Container(
-      height: 50,
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ...row.map(
-            (alphabet) {
-              return InkWell(
-                borderRadius: BorderRadius.circular(5),
-                onTap: () {
-                  actionController.onKeyPress(alphabet.value);
-                },
-                child: MyKey(
-                  alphabet: alphabet,
-                ),
-              );
-            },
-          ).toList(),
         ],
       ),
     );
