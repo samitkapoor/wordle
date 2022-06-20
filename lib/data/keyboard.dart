@@ -1,6 +1,9 @@
 import 'package:wordle/models/alphabet.dart';
 
 class Keyboard {
+  //All the disabled alphabets will be stored inside this list
+  List<String> disabledAlphabets = [];
+
   //List containing all the alphabets in the top row of the keyboard
   List<Alphabet> rowOne = [
     Alphabet(value: 'q', position: 0),

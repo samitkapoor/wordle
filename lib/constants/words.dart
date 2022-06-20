@@ -15445,7 +15445,6 @@ const List<String> words = [
   'weave',
   'webby',
   'weber',
-  'wecht',
   'wedel',
   'wedge',
   'wedgy',

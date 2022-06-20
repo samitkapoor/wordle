@@ -110,7 +110,9 @@ class ActionController extends GetxController {
           wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.green;
         } else if (findInString(wordToWin, input[i])) {
           wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.orange;
-        } else {}
+        } else {
+          keyboard.disabledAlphabets.add(input[i]);
+        }
       }
 
       //if the word input by the user is the word that we are guessing, then he won

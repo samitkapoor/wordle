@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:wordle/controllers/action.dart';
 import 'package:wordle/models/alphabet.dart';
 
 //A row in a keyboard contains some alphabets
@@ -17,6 +19,8 @@ class MyKey extends StatelessWidget {
   //This variable contains the information about the key that we are currently rendering
   Alphabet alphabet;
 
+  ActionController actionController = Get.find<ActionController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +29,10 @@ class MyKey extends StatelessWidget {
       width: (MediaQuery.of(context).size.width - 10 - 40) / 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: alphabet.disabled ? Colors.grey : Theme.of(context).primaryColor,
+        color:
+            actionController.keyboard.disabledAlphabets.contains(alphabet.value)
+                ? Colors.grey
+                : Theme.of(context).primaryColor,
       ),
       alignment: Alignment.center,
       child: Text(
