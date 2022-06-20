@@ -3928,7 +3928,6 @@ List<String> words = [
   'discs',
   'dishy',
   'disks',
-  'disli',
   'disme',
   'disna',
   'disty',
