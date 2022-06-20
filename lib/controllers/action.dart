@@ -101,7 +101,7 @@ class ActionController extends GetxController {
       }
       if (inputs[inputNumber].toLowerCase() == wordToWin) {
         ScaffoldMessenger.of(context)
-            .showMaterialBanner(MyMaterialBanner(win: true));
+            .showMaterialBanner(MyMaterialBanner(win: true, context: context));
         update();
         return;
       }
@@ -113,7 +113,7 @@ class ActionController extends GetxController {
 
       if (inputNumber == 6) {
         ScaffoldMessenger.of(context)
-            .showMaterialBanner(MyMaterialBanner(win: false));
+            .showMaterialBanner(MyMaterialBanner(win: false, context: context));
       }
 
       update();

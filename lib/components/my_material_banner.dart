@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wordle/controllers/action.dart';
 
-MaterialBanner MyMaterialBanner({required bool win}) {
+MaterialBanner MyMaterialBanner(
+    {required bool win, required BuildContext context}) {
   ActionController actionController = Get.find<ActionController>();
 
   String message = '';
@@ -34,7 +35,20 @@ MaterialBanner MyMaterialBanner({required bool win}) {
       fontSize: 32,
     ),
     actions: [
-      const SizedBox(),
+      InkWell(
+        onTap: () {
+          ScaffoldMessenger.of(context).clearMaterialBanners();
+        },
+        child: Container(
+          height: 32,
+          width: 32,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/icons/dismiss.png'),
+            ),
+          ),
+        ),
+      ),
     ],
   );
 }
