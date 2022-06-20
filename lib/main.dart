@@ -3,9 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:wordle/controllers/action.dart';
-
-import 'package:wordle/controllers/keyboard.dart';
-import 'package:wordle/controllers/word_slot.dart';
 import 'package:wordle/core/playground.dart';
 
 void main() {

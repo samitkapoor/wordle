@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wordle/components/keyboard_row.dart';
 
-import 'package:wordle/components/my_key.dart';
+import 'package:wordle/components/keyboard_row.dart';
 import 'package:wordle/controllers/action.dart';
-import 'package:wordle/controllers/keyboard.dart';
-import 'package:wordle/controllers/word_slot.dart';
-import 'package:wordle/utils/random_number_generator.dart';
 
 // ignore: must_be_immutable
 class MyPlayground extends StatefulWidget {

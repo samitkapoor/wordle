@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:wordle/components/my_key.dart';
 import 'package:wordle/controllers/action.dart';
 
+// ignore: must_be_immutable
 class MyKeyboardRow extends StatelessWidget {
   MyKeyboardRow({super.key, required this.row, required this.actionController});
 

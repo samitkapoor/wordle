@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:wordle/components/my_material_banner.dart';
 import 'package:wordle/constants/words.dart';
 import 'package:wordle/controllers/keyboard.dart';
@@ -22,7 +23,6 @@ class ActionController extends GetxController {
   void onInit() {
     Future.delayed(const Duration(seconds: 1)).then((value) async {
       await randomNumberGenerator();
-      print(wordToWin);
     });
     super.onInit();
   }
