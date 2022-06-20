@@ -14,6 +14,8 @@ class ActionController extends GetxController {
 
   String wordToWin = '';
 
+  bool gameEnd = false;
+
   List<String> inputs = ['', '', '', '', '', ''];
 
   @override
@@ -29,6 +31,7 @@ class ActionController extends GetxController {
     keyboardController = Keyboard();
     wordSlotController = WordSlot();
     inputNumber = 0;
+    gameEnd = false;
     randomNumberGenerator();
     inputs = ['', '', '', '', '', ''];
     update();
@@ -41,7 +44,7 @@ class ActionController extends GetxController {
   }
 
   void onKeyPress(String value) {
-    if (inputs[inputNumber].length < 5) {
+    if (!gameEnd && inputs[inputNumber].length < 5) {
       inputs[inputNumber] += value.toUpperCase();
       wordSlotController
           .wordSlots[inputNumber]['slots'][inputs[inputNumber].length - 1]
@@ -52,7 +55,7 @@ class ActionController extends GetxController {
   }
 
   void onPressBackSpace() {
-    if (inputs[inputNumber].isNotEmpty) {
+    if (!gameEnd && inputs[inputNumber].isNotEmpty) {
       inputs[inputNumber] =
           inputs[inputNumber].substring(0, inputs[inputNumber].length - 1);
       wordSlotController
@@ -87,7 +90,8 @@ class ActionController extends GetxController {
 
     if (inputNumber == 6) {
       onReset();
-    } else if (inputNumber <= 5 &&
+    } else if (!gameEnd &&
+        inputNumber <= 5 &&
         inputs[inputNumber].length == 5 &&
         findInList(input)) {
       for (int i = 0; i < 5; i++) {
@@ -102,6 +106,7 @@ class ActionController extends GetxController {
       if (inputs[inputNumber].toLowerCase() == wordToWin) {
         ScaffoldMessenger.of(context)
             .showMaterialBanner(MyMaterialBanner(win: true, context: context));
+        gameEnd = true;
         update();
         return;
       }
@@ -114,6 +119,7 @@ class ActionController extends GetxController {
       if (inputNumber == 6) {
         ScaffoldMessenger.of(context)
             .showMaterialBanner(MyMaterialBanner(win: false, context: context));
+        gameEnd = true;
       }
 
       update();

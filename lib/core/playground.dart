@@ -144,7 +144,7 @@ class _MyPlaygroundState extends State<MyPlayground> {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage(
-                                      (controller.inputNumber <= 5)
+                                      (controller.gameEnd == false)
                                           ? 'assets/icons/enter.png'
                                           : 'assets/icons/reset.png'),
                                 ),

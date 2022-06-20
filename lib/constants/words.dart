@@ -3587,7 +3587,6 @@ List<String> words = [
   'darat',
   'darby',
   'darbs',
-  'darci',
   'darcy',
   'dared',
   'daren',
