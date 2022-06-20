@@ -10981,7 +10981,6 @@ List<String> words = [
   'prill',
   'prima',
   'prime',
-  'primi',
   'primy',
   'primo',
   'primp',
