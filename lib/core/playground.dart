@@ -125,7 +125,7 @@ class _MyPlaygroundState extends State<MyPlayground> {
                       return Expanded(
                         child: InkWell(
                           onTap: () {
-                            controller.onPressEnter();
+                            controller.onPressEnter(context: context);
                           },
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 2),

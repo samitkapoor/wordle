@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wordle/components/my_material_banner.dart';
 import 'package:wordle/constants/words.dart';
 import 'package:wordle/controllers/keyboard.dart';
 import 'package:wordle/controllers/word_slot.dart';
@@ -78,7 +79,7 @@ class ActionController extends GetxController {
     return false;
   }
 
-  void onPressEnter() {
+  void onPressEnter({required BuildContext context}) {
     String input = '';
     if (inputNumber <= 5) {
       input = inputs[inputNumber].toLowerCase();
@@ -99,9 +100,20 @@ class ActionController extends GetxController {
         }
       }
 
+      if (inputs[inputNumber] == wordToWin) {
+        ScaffoldMessenger.of(context)
+            .showMaterialBanner(MyMaterialBanner(win: true));
+        return;
+      }
+
       inputNumber += 1;
       if (inputNumber <= 5) {
         wordSlotController.wordSlots[inputNumber]['visibility'] = true;
+      }
+
+      if (inputNumber == 6) {
+        ScaffoldMessenger.of(context)
+            .showMaterialBanner(MyMaterialBanner(win: false));
       }
 
       update();

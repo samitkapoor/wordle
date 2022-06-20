@@ -1,3 +1,5 @@
+//TODO: Remove those english words that are not a part of dictionary and are not common
+
 List<String> words = [
   'aahed',
   'aalii',
@@ -4500,7 +4502,6 @@ List<String> words = [
   'enact',
   'enage',
   'enami',
-  'enapt',
   'enarm',
   'enate',
   'encia',
@@ -14008,7 +14009,6 @@ List<String> words = [
   'tenth',
   'tenty',
   'tents',
-  'tenue',
   'tepal',
   'tepas',
   'tepee',
