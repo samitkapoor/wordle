@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:wordle/components/my_key.dart';
 import 'package:wordle/controllers/action.dart';
 
+//There are three rows containing alphabets in a keyboard
+//Each row in a keyboard will look like this widget
+
 // ignore: must_be_immutable
 class MyKeyboardRow extends StatelessWidget {
   MyKeyboardRow({super.key, required this.row, required this.actionController});
 
+  //List containing all the alphabets that are present in the row
   List row;
 
   ActionController actionController;

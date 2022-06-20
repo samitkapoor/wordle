@@ -15,6 +15,7 @@ class MyPlayground extends StatefulWidget {
 
 class _MyPlaygroundState extends State<MyPlayground> {
   ActionController actionController = Get.find<ActionController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +31,7 @@ class _MyPlaygroundState extends State<MyPlayground> {
                 shrinkWrap: true,
                 physics: const ScrollPhysics(),
                 children: [
-                  ...controller.wordSlotController.wordSlots.map(
+                  ...controller.wordSlot.wordSlots.map(
                     (wordSlot) {
                       if (wordSlot['visibility'] == true) {
                         return Row(
@@ -82,16 +83,17 @@ class _MyPlaygroundState extends State<MyPlayground> {
             child: Column(
               children: [
                 MyKeyboardRow(
-                  row: actionController.keyboardController.rowOne,
+                  row: actionController.keyboard.rowOne,
                   actionController: actionController,
                 ),
                 MyKeyboardRow(
-                  row: actionController.keyboardController.rowTwo,
+                  row: actionController.keyboard.rowTwo,
                   actionController: actionController,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    //The backspace button on the keyboard
                     Expanded(
                       child: InkWell(
                         onTap: () {
@@ -114,9 +116,11 @@ class _MyPlaygroundState extends State<MyPlayground> {
                       ),
                     ),
                     MyKeyboardRow(
-                      row: actionController.keyboardController.rowThree,
+                      row: actionController.keyboard.rowThree,
                       actionController: actionController,
                     ),
+
+                    //The enter/reset button on the keyboard
                     GetBuilder<ActionController>(builder: (controller) {
                       return Expanded(
                         child: InkWell(

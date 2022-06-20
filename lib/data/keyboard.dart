@@ -1,8 +1,7 @@
-import 'package:get/get.dart';
-
 import 'package:wordle/models/alphabet.dart';
 
-class Keyboard extends GetxController {
+class Keyboard {
+  //List containing all the alphabets in the top row of the keyboard
   List<Alphabet> rowOne = [
     Alphabet(value: 'q', position: 0),
     Alphabet(value: 'w', position: 0),
@@ -16,6 +15,7 @@ class Keyboard extends GetxController {
     Alphabet(value: 'p', position: 0),
   ];
 
+  //List containing all the alphabets in the middle row of the keyboard
   List<Alphabet> rowTwo = [
     Alphabet(value: 'a', position: 0),
     Alphabet(value: 's', position: 0),
@@ -28,6 +28,7 @@ class Keyboard extends GetxController {
     Alphabet(value: 'l', position: 0),
   ];
 
+  //List containing all the alphabets in the bottom row of the keyboard
   List<Alphabet> rowThree = [
     Alphabet(value: 'z', position: 0),
     Alphabet(value: 'x', position: 0),

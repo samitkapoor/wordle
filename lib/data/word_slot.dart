@@ -1,8 +1,6 @@
-import 'package:get/get.dart';
-
 import 'package:wordle/models/cell.dart';
 
-class WordSlot extends GetxController {
+class WordSlot {
   List<Map<String, dynamic>> wordSlots = [
     {
       'visibility': true,

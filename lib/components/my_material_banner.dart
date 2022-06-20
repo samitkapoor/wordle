@@ -4,6 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:wordle/controllers/action.dart';
 
+//When a game ends, a message is inserted on the screen
+//The message is placed in a transparent material banner
+
+// ignore: non_constant_identifier_names
 MaterialBanner MyMaterialBanner(
     {required bool win, required BuildContext context}) {
   ActionController actionController = Get.find<ActionController>();

@@ -3,7 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:wordle/models/alphabet.dart';
 
-//Each key in keyboard will look like this widget
+//A row in a keyboard contains some alphabets
+//Those alphabets are buttons or keys of keyboard
+//Each key of the keyboard will look like the widget defined below
 
 // ignore: must_be_immutable
 class MyKey extends StatelessWidget {
@@ -12,6 +14,7 @@ class MyKey extends StatelessWidget {
     required this.alphabet,
   }) : super(key: key);
 
+  //This variable contains the information about the key that we are currently rendering
   Alphabet alphabet;
 
   @override
@@ -22,7 +25,7 @@ class MyKey extends StatelessWidget {
       width: (MediaQuery.of(context).size.width - 10 - 40) / 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: Theme.of(context).primaryColor,
+        color: alphabet.disabled ? Colors.grey : Theme.of(context).primaryColor,
       ),
       alignment: Alignment.center,
       child: Text(

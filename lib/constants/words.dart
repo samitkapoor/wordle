@@ -1,6 +1,9 @@
+//List of all the words that our game can offer
+//A word is randomly picked from this list for the game whenever a new round starts
+
 //TODO: Remove those english words that are not a part of dictionary and are not common
 
-List<String> words = [
+const List<String> words = [
   'aahed',
   'aalii',
   'aargh',
