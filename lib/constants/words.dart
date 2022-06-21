@@ -14978,7 +14978,6 @@ const List<String> words = [
   'urutu',
   'usage',
   'usant',
-  'usara',
   'usent',
   'users',
   'ushak',
