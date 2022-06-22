@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:wordle/components/my_material_banner.dart';
+import 'package:wordle/constants/guesses.dart';
 import 'package:wordle/constants/words.dart';
 import 'package:wordle/data/keyboard.dart';
 import 'package:wordle/data/word_slot.dart';
@@ -76,9 +77,9 @@ class ActionController extends GetxController {
   }
 
   //This function finds a string inside the words.dart list
-  bool findInList(String target) {
-    for (int i = 0; i < words.length; i++) {
-      if (words[i] == target) {
+  bool findInList({required List<String> list, required String target}) {
+    for (int i = 0; i < list.length; i++) {
+      if (list[i] == target) {
         return true;
       }
     }
@@ -97,47 +98,48 @@ class ActionController extends GetxController {
   void onPressEnter({required BuildContext context}) {
     String input = '';
     input = inputs[inputNumber].toLowerCase();
-
-    if (inputNumber == 6) {
-      onReset();
-    } else if (!gameEnd &&
-        inputNumber <= 5 &&
-        inputs[inputNumber].length == 5 &&
-        findInList(input)) {
-      //set the color of the cell accordingly
-      for (int i = 0; i < 5; i++) {
-        if (wordToWin[i] == input[i]) {
-          wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.green;
-        } else if (findInString(wordToWin, input[i])) {
-          wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.orange;
-        } else {
-          keyboard.disabledAlphabets.add(input[i]);
-        }
-      }
-
-      //if the word input by the user is the word that we are guessing, then he won
-      if (inputs[inputNumber].toLowerCase() == wordToWin) {
-        ScaffoldMessenger.of(context)
-            .showMaterialBanner(MyMaterialBanner(win: true, context: context));
-        gameEnd = true;
-        update();
-        return;
-      }
-
-      //else just increase the inputNumber
-      inputNumber += 1;
-      if (inputNumber <= 5) {
-        wordSlot.wordSlots[inputNumber]['visibility'] = true;
-      }
-
-      //if inputNumber == 6 and the game hasn't ended yet then that means the user couldn't guess the word
+    if (findInList(list: guesses, target: input)) {
       if (inputNumber == 6) {
-        ScaffoldMessenger.of(context)
-            .showMaterialBanner(MyMaterialBanner(win: false, context: context));
-        gameEnd = true;
-      }
+        onReset();
+      } else if (!gameEnd &&
+          inputNumber <= 5 &&
+          inputs[inputNumber].length == 5 &&
+          findInList(list: words, target: input)) {
+        //set the color of the cell accordingly
+        for (int i = 0; i < 5; i++) {
+          if (wordToWin[i] == input[i]) {
+            wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.green;
+          } else if (findInString(wordToWin, input[i])) {
+            wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.orange;
+          } else {
+            keyboard.disabledAlphabets.add(input[i]);
+          }
+        }
 
-      update();
+        //if the word input by the user is the word that we are guessing, then he won
+        if (inputs[inputNumber].toLowerCase() == wordToWin) {
+          ScaffoldMessenger.of(context).showMaterialBanner(
+              MyMaterialBanner(win: true, context: context));
+          gameEnd = true;
+          update();
+          return;
+        }
+
+        //else just increase the inputNumber
+        inputNumber += 1;
+        if (inputNumber <= 5) {
+          wordSlot.wordSlots[inputNumber]['visibility'] = true;
+        }
+
+        //if inputNumber == 6 and the game hasn't ended yet then that means the user couldn't guess the word
+        if (inputNumber == 6) {
+          ScaffoldMessenger.of(context).showMaterialBanner(
+              MyMaterialBanner(win: false, context: context));
+          gameEnd = true;
+        }
+
+        update();
+      }
     }
   }
 }
