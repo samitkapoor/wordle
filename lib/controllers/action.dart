@@ -36,9 +36,11 @@ class ActionController extends GetxController {
   }
 
   //When we reset the game, we set all the values to out initial values
-  void onReset() {
-    keyboard = Keyboard();
-    wordSlot = WordSlot();
+  void onReset(BuildContext context) {
+    ScaffoldMessenger.of(context).clearMaterialBanners();
+    keyboard.reset();
+    wordSlot.reset();
+    print('hereeee');
     inputNumber = 0;
     gameEnd = false;
     randomNumberGenerator();
@@ -76,7 +78,7 @@ class ActionController extends GetxController {
     }
   }
 
-  //This function finds a string inside the words.dart list
+  //This function finds a string inside the list
   bool findInList({required List<String> list, required String target}) {
     for (int i = 0; i < list.length; i++) {
       if (list[i] == target) {
@@ -96,21 +98,27 @@ class ActionController extends GetxController {
 
   //This function will be called everytime we press enter key
   void onPressEnter({required BuildContext context}) {
+    if (inputNumber == 6 || gameEnd) {
+      print('here');
+      onReset(context);
+      return;
+    }
+
     String input = '';
     input = inputs[inputNumber].toLowerCase();
     if (findInList(list: guesses, target: input)) {
-      if (inputNumber == 6) {
-        onReset();
-      } else if (!gameEnd &&
+      if (!gameEnd &&
           inputNumber <= 5 &&
           inputs[inputNumber].length == 5 &&
-          findInList(list: words, target: input)) {
+          findInList(list: guesses, target: input)) {
         //set the color of the cell accordingly
         for (int i = 0; i < 5; i++) {
           if (wordToWin[i] == input[i]) {
             wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.green;
+            keyboard.correctAlphabets.add(input[i]);
           } else if (findInString(wordToWin, input[i])) {
             wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.orange;
+            keyboard.notInPlaceAlphabets.add(input[i]);
           } else {
             keyboard.disabledAlphabets.add(input[i]);
           }

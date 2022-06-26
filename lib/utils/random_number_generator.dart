@@ -13,5 +13,7 @@ Future<void> randomNumberGenerator() {
   int x = random.nextInt(words.length);
 
   actionController.setWordToWin(words[x]);
+
+  print(actionController.wordToWin);
   return Future.value();
 }
