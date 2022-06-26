@@ -40,7 +40,6 @@ class ActionController extends GetxController {
     ScaffoldMessenger.of(context).clearMaterialBanners();
     keyboard.reset();
     wordSlot.reset();
-    print('hereeee');
     inputNumber = 0;
     gameEnd = false;
     randomNumberGenerator();
@@ -99,7 +98,6 @@ class ActionController extends GetxController {
   //This function will be called everytime we press enter key
   void onPressEnter({required BuildContext context}) {
     if (inputNumber == 6 || gameEnd) {
-      print('here');
       onReset(context);
       return;
     }

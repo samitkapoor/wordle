@@ -14,6 +14,5 @@ Future<void> randomNumberGenerator() {
 
   actionController.setWordToWin(words[x]);
 
-  print(actionController.wordToWin);
   return Future.value();
 }
