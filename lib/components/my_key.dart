@@ -32,7 +32,13 @@ class MyKey extends StatelessWidget {
         color:
             actionController.keyboard.disabledAlphabets.contains(alphabet.value)
                 ? Colors.grey
-                : Theme.of(context).primaryColor,
+                : actionController.keyboard.notInPlaceAlphabets
+                        .contains(alphabet.value)
+                    ? Colors.orange
+                    : actionController.keyboard.correctAlphabets
+                            .contains(alphabet.value)
+                        ? Colors.green
+                        : Theme.of(context).primaryColor,
       ),
       alignment: Alignment.center,
       child: Text(

@@ -3,12 +3,11 @@ import 'package:get/get.dart';
 
 import 'package:wordle/components/my_material_banner.dart';
 import 'package:wordle/constants/guesses.dart';
-import 'package:wordle/constants/words.dart';
 import 'package:wordle/data/keyboard.dart';
 import 'package:wordle/data/word_slot.dart';
 import 'package:wordle/utils/random_number_generator.dart';
 
-//All the logic of the game resides in this controller
+//All the logic of the game resides in this controllers
 
 class ActionController extends GetxController {
   Keyboard keyboard = Keyboard();
@@ -121,6 +120,7 @@ class ActionController extends GetxController {
             keyboard.disabledAlphabets.add(input[i]);
           }
         }
+        update();
 
         //if the word input by the user is the word that we are guessing, then he won
         if (inputs[inputNumber].toLowerCase() == wordToWin) {
