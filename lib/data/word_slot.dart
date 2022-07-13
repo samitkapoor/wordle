@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordle/constants/colors.dart';
 import 'package:wordle/constants/words.dart';
 import 'package:wordle/models/cell.dart';
 
@@ -9,7 +10,7 @@ class WordSlot {
 
       for (int j = 0; j < wordSlots[i]['slots'].length; j++) {
         wordSlots[i]['slots'][j].value = '';
-        wordSlots[i]['slots'][j].color = const Color(0xff007EA7);
+        wordSlots[i]['slots'][j].color = primaryColor;
       }
     }
     wordSlots[0]['visibility'] = true;

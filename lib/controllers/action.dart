@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:wordle/components/my_material_banner.dart';
+import 'package:wordle/constants/colors.dart';
 import 'package:wordle/constants/guesses.dart';
 import 'package:wordle/data/keyboard.dart';
 import 'package:wordle/data/word_slot.dart';
@@ -111,10 +112,10 @@ class ActionController extends GetxController {
         //set the color of the cell accordingly
         for (int i = 0; i < 5; i++) {
           if (wordToWin[i] == input[i]) {
-            wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.green;
+            wordSlot.wordSlots[inputNumber]['slots'][i].color = inPlaceColor;
             keyboard.correctAlphabets.add(input[i]);
           } else if (findInString(wordToWin, input[i])) {
-            wordSlot.wordSlots[inputNumber]['slots'][i].color = Colors.orange;
+            wordSlot.wordSlots[inputNumber]['slots'][i].color = notInPlaceColor;
             keyboard.notInPlaceAlphabets.add(input[i]);
           } else {
             keyboard.disabledAlphabets.add(input[i]);

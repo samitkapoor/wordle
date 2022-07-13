@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wordle/constants/colors.dart';
 
 import 'package:wordle/controllers/action.dart';
 import 'package:wordle/core/playground.dart';
@@ -26,19 +27,15 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
           titleTextStyle: GoogleFonts.aBeeZee(
             fontSize: 24,
-            color: Colors.black,
+            color: Colors.white,
             letterSpacing: 1,
             fontWeight: FontWeight.w600,
           ),
         ),
         textTheme: const TextTheme(),
         colorScheme: const ColorScheme.dark(),
-        primaryColor: const Color(0xff007EA7),
-        // scaffoldBackgroundColor: const Color(0xff003249),
-        scaffoldBackgroundColor: Colors.white,
-        cardColor: const Color(0xff80CED7),
-        hintColor: const Color(0xff9AD1D4),
-        canvasColor: const Color(0xffCCDBDC),
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: const Color(0xff000500),
       ),
       home: MyPlayground(),
     );

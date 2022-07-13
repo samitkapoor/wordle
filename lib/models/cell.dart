@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordle/constants/colors.dart';
 
 class Cell {
   String value;
@@ -6,6 +7,6 @@ class Cell {
 
   Cell({
     required this.value,
-    this.color = const Color(0xff007EA7),
+    this.color = primaryColor,
   });
 }

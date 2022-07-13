@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wordle/constants/colors.dart';
 
 import 'package:wordle/controllers/action.dart';
 import 'package:wordle/models/alphabet.dart';
@@ -31,13 +32,13 @@ class MyKey extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         color:
             actionController.keyboard.disabledAlphabets.contains(alphabet.value)
-                ? Colors.grey
+                ? Theme.of(context).scaffoldBackgroundColor
                 : actionController.keyboard.notInPlaceAlphabets
                         .contains(alphabet.value)
-                    ? Colors.orange
+                    ? notInPlaceColor
                     : actionController.keyboard.correctAlphabets
                             .contains(alphabet.value)
-                        ? Colors.green
+                        ? inPlaceColor
                         : Theme.of(context).primaryColor,
       ),
       alignment: Alignment.center,

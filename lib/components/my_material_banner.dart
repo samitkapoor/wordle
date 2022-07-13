@@ -35,22 +35,22 @@ MaterialBanner MyMaterialBanner(
       textAlign: TextAlign.center,
     ),
     contentTextStyle: GoogleFonts.aBeeZee(
-      color: Colors.black,
+      color: Colors.white,
       fontWeight: FontWeight.bold,
-      fontSize: 32,
+      fontSize: 24,
     ),
     actions: [
       InkWell(
         onTap: () {
           ScaffoldMessenger.of(context).clearMaterialBanners();
         },
-        child: Container(
+        child: SizedBox(
           height: 32,
           width: 32,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/icons/dismiss.png'),
-            ),
+          child: Icon(
+            Icons.cancel,
+            color: Colors.red.shade800,
+            size: 28,
           ),
         ),
       ),
