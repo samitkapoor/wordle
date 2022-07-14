@@ -4,7 +4,7 @@ A mobile rendition of the world famous game called [Wordle](https://www.nytimes.
 
 # Preview of the Application
 
-<img height=500 src="https://github.com/samitkapoor/wordle/blob/master/assets/preview.gif"/>
+<img height=500 src="https://github.com/samitkapoor/wordle/blob/master/assets/gif/preview.gif"/>
 
 # Packages Used: 
 
