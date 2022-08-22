@@ -5,7 +5,7 @@ import 'package:wordle/components/my_key.dart';
 import 'package:wordle/controllers/action.dart';
 
 //There are three rows containing alphabets in a keyboard
-//Each row in a keyboard will look like this widget
+//Each row in a keyboard will look like this widget just provide it a list of alphabets
 
 // ignore: must_be_immutable
 class MyKeyboardRow extends StatelessWidget {

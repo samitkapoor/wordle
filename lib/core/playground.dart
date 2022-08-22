@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+import 'package:wordle/components/fill_box.dart';
 import 'package:wordle/components/keyboard_row.dart';
 import 'package:wordle/controllers/action.dart';
 
@@ -38,31 +38,7 @@ class _MyPlaygroundState extends State<MyPlayground> {
                           children: [
                             ...wordSlot['slots'].map(
                               (cell) {
-                                return AnimatedContainer(
-                                  duration: const Duration(milliseconds: 250),
-                                  margin: const EdgeInsets.all(5),
-                                  height:
-                                      (MediaQuery.of(context).size.width - 70) /
-                                          5,
-                                  width:
-                                      (MediaQuery.of(context).size.width - 70) /
-                                          5,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: 3, color: Colors.black),
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: cell.color,
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    cell.value,
-                                    style: GoogleFonts.aBeeZee(
-                                      fontSize: 32,
-                                      letterSpacing: 1,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                );
+                                return FillBoxWidget(cell: cell);
                               },
                             ).toList(),
                           ],
@@ -121,39 +97,42 @@ class _MyPlaygroundState extends State<MyPlayground> {
                     ),
 
                     //The enter/reset button on the keyboard
-                    GetBuilder<ActionController>(builder: (controller) {
-                      return Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            controller.onPressEnter(context: context);
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 2),
-                            height: 40,
-                            width:
-                                (MediaQuery.of(context).size.width - 10 - 40) /
-                                    10,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            alignment: Alignment.center,
+                    GetBuilder<ActionController>(
+                      builder: (controller) {
+                        return Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              controller.onPressEnter(context: context);
+                            },
                             child: Container(
-                              height: 30,
-                              width: 25,
+                              margin: const EdgeInsets.symmetric(horizontal: 2),
+                              height: 40,
+                              width: (MediaQuery.of(context).size.width -
+                                      10 -
+                                      40) /
+                                  10,
                               decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      (controller.gameEnd == false)
-                                          ? 'assets/icons/enter.png'
-                                          : 'assets/icons/reset.png'),
+                                borderRadius: BorderRadius.circular(5),
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              alignment: Alignment.center,
+                              child: Container(
+                                height: 30,
+                                width: 25,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        (controller.gameEnd == false)
+                                            ? 'assets/icons/enter.png'
+                                            : 'assets/icons/reset.png'),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ],
