@@ -25,9 +25,9 @@ class MyKey extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 2),
+      margin: const EdgeInsets.symmetric(horizontal: 3),
       height: 40,
-      width: (MediaQuery.of(context).size.width - 10 - 40) / 10,
+      width: (MediaQuery.of(context).size.width - 10 - 60) / 10,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color:

@@ -76,7 +76,7 @@ class _MyPlaygroundState extends State<MyPlayground> {
                           actionController.onPressBackSpace();
                         },
                         child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 2),
+                          margin: const EdgeInsets.symmetric(horizontal: 3),
                           height: 40,
                           width: (MediaQuery.of(context).size.width - 10 - 40) /
                               10,
@@ -105,7 +105,7 @@ class _MyPlaygroundState extends State<MyPlayground> {
                               controller.onPressEnter(context: context);
                             },
                             child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 2),
+                              margin: const EdgeInsets.symmetric(horizontal: 3),
                               height: 40,
                               width: (MediaQuery.of(context).size.width -
                                       10 -
