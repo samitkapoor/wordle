@@ -19,15 +19,15 @@ MaterialBanner MyMaterialBanner(
   String message = '';
 
   if (actionController.inputNumber == 0 && win) {
-    message = 'Amazing!';
+    message = 'Genius!';
   } else if (actionController.inputNumber == 1 && win) {
+    message = 'Amazing!';
+  } else if (actionController.inputNumber == 2 && win) {
     message = 'Splendid!';
-  } else if ((actionController.inputNumber == 2 ||
-          actionController.inputNumber == 3) &&
-      win) {
-    message = 'Great Job!';
+  } else if (actionController.inputNumber == 3 && win) {
+    message = 'Great';
   } else if (win) {
-    message = 'Good Job!';
+    message = 'Good';
   }
 
   return MaterialBanner(
