@@ -10,6 +10,10 @@ import 'package:wordle/controllers/action.dart';
 // ignore: non_constant_identifier_names
 MaterialBanner MyMaterialBanner(
     {required bool win, required BuildContext context}) {
+  Future.delayed(const Duration(seconds: 2)).then((value) {
+    ScaffoldMessenger.of(context).clearMaterialBanners();
+  });
+
   ActionController actionController = Get.find<ActionController>();
 
   String message = '';
@@ -40,20 +44,7 @@ MaterialBanner MyMaterialBanner(
       fontSize: 24,
     ),
     actions: [
-      InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context).clearMaterialBanners();
-        },
-        child: SizedBox(
-          height: 32,
-          width: 32,
-          child: Icon(
-            Icons.cancel,
-            color: Colors.red.shade800,
-            size: 28,
-          ),
-        ),
-      ),
+      SizedBox(),
     ],
   );
 }
