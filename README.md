@@ -25,9 +25,6 @@ https://user-images.githubusercontent.com/77121931/222927285-b3f185c7-527a-4996-
 - Open the files of this project in VS Code and Open your Android Emulator.
 - Press Ctrl+F5 in VS Code to start running the project!
 
-## Flutter packages used in this project:
-[font_awesome_flutter](https://pub.dev/packages/font_awesome_flutter)
-
 ---
 
 - Here's my [portfolio](https://samitkapoor.netlify.app) to know more about me!
